@@ -26,27 +26,24 @@ BitcoinHeist <- unique(fullSet)
 #nrow(BitcoinHeist)
 
 #Create white data and virus data objects
+#' @export
 whitedata<-BitcoinHeist[BitcoinHeist$label=="white",]
-
+#' @export
 virusdata<-BitcoinHeist[BitcoinHeist$label!="white",]
 
 show(virusdata)
 show(whitedata)
 allfeatures<-c("length","weight","neighbors","count","looped","income")
 features= allfeatures[c(1,2,3,4,5,6)]
+#'@export
 uniqueWhiteAddresses <- unique(whitedata)
+#'@export
 uniqueVirusAddresses <- unique(virusdata)
 show(uniqueWhiteAddresses)
 show(uniqueVirusAddresses)
 
-#Functions---------
 #' Unique Addresses of Ransomware Families
-#'
-#' @return
 #' @export
-#'
-#' @examples
-#' uniqueAddressesOfRansomwareFamilies()
 uniqueAddressesOfRansomewareFamilies <- function(){
   uniqueAddresses <- count(uniqueVirusAddresses, 'label')
   return(uniqueAddresses)
@@ -267,7 +264,6 @@ getAddressesBelongingTo <- function(x){
   }
   return(addressesBelongingTo)
 }
-
 
 #RESULTS S1 - Averages of all features (weight, length, mean, income, neighbors, count, looped, neighbors)
 #Average results for virus addresses
