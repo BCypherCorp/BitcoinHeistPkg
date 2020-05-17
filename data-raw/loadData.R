@@ -26,50 +26,28 @@ BitcoinHeist <- unique(fullSet)
 #nrow(BitcoinHeist)
 
 #Create white data and virus data objects
-#' @export
 whitedata<-BitcoinHeist[BitcoinHeist$label=="white",]
-#' @export
 virusdata<-BitcoinHeist[BitcoinHeist$label!="white",]
 
 show(virusdata)
 show(whitedata)
 allfeatures<-c("length","weight","neighbors","count","looped","income")
 features= allfeatures[c(1,2,3,4,5,6)]
-#'@export
-uniqueWhiteAddresses <- unique(whitedata)
-#'@export
-uniqueVirusAddresses <- unique(virusdata)
-show(uniqueWhiteAddresses)
-show(uniqueVirusAddresses)
 
-#' Unique Addresses of Ransomware Families
-#' @export
+uniqueWhiteAddresses <- unique(whitedata)
+uniqueVirusAddresses <- unique(virusdata)
+
+#Functions-----
 uniqueAddressesOfRansomewareFamilies <- function(){
   uniqueAddresses <- count(uniqueVirusAddresses, 'label')
   return(uniqueAddresses)
 }
 
-#' Most Active Ransomware Family
-#'
-#' @return most active ransomware family
-#' @export
-#'
-#' @examples
-#' mostActiveFamily()
 mostActiveFamily <- function(){
   mostActive <- tail(names(sort(table(virusdata$label))), 1)
   return(mostActive)
 }
 
-#' Get total weight of unique addresses belonging to a ransomware family
-#'
-#' @param x
-#'
-#' @return total weight of unique addresses belonging to a ransomware family
-#' @export
-#'
-#' @examples
-#' getTotalWeightOf("montrealAPT")
 getTotalWeightOf <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
 
@@ -95,15 +73,6 @@ getTotalWeightOf <- function(x){
   return(weightTotal)
 }
 
-#' Get total neighbor count of all unique addresses belonging to a ransomware family
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' getTotalNeighborsOf("montrealAPT")
 getTotalNeighborsOf <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
 
@@ -129,15 +98,6 @@ getTotalNeighborsOf <- function(x){
   return(neighborsTotal)
 }
 
-#' Get total looped feature of all unique addresses belonging to ransomware family
-#'
-#' @param x
-#'
-#' @return total looped feature of all unique addresses belonging to ransomware family
-#' @export
-#'
-#' @examples
-#' getTotalLoopedOf("montrealAPT")
 getTotalLoopedOf <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
 
@@ -163,15 +123,6 @@ getTotalLoopedOf <- function(x){
   return(loopedTotal)
 }
 
-#' Get Total Income Of
-#'
-#' @param x
-#'
-#' @return total income of all unique addresses of ransomware family
-#' @export
-#'
-#' @examples
-#' getTotalIncomeOf("montrealAPT")
 getTotalIncomeOf <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
 
@@ -201,15 +152,6 @@ getTotalIncomeOf <- function(x){
   return(income_data)
 }
 
-#' Get total count of all unique wallets belonging to a ransomware address
-#'
-#' @param x
-#'
-#' @return total count of all unique wallets belonging to a ransomware address
-#' @export
-#'
-#' @examples
-#' getTotalCountOf("montrealAPT")
 getTotalCountOf <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
 
@@ -235,27 +177,11 @@ getTotalCountOf <- function(x){
   return(countTotal)
 }
 
-#' Get Ransomware Families
-#'
-#' @return list of ransomware families
-#' @export
-#'
-#' @examples
-#' getRansomwareFamilies()
 getRansomwareFamilies <- function(){
   uniqueVirusLabels <- unique(virusdata$label)
   return(uniqueVirusLabels)
 }
 
-#' Get Addresses Belonging To a Ransomware Family
-#'
-#' @param x
-#'
-#' @return addresses belonging to family x
-#' @export
-#'
-#' @examples
-#' getAddressesBelongingTo("montrealAPT")
 getAddressesBelongingTo <- function(x){
   addressesBelongingTo <- uniqueVirusAddresses %>% filter(label == x)
   if(nrow(addressesBelongingTo) == 0){
