@@ -1,3 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+BitcoinHeistShard1/
+BitcoinHeistShard2/
+BitcoinHeistShard3/
+BitcoinHeistShard4/
+BitcoinHeistShard5/
+BitcoinHeistShard6/
+BitcoinHeistShard7/

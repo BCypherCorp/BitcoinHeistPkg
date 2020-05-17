@@ -1,11 +1,13 @@
 Package: BitcoinHeistPkg
 Type: Package
-Title: What the Package Does (Title Case)
+Title: BitcoinHeist Ransomware Dataset
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: person("Sudhanva", "Purushotham", email = "sxp176930@utdallas.edu",
+                  role = c("aut", "cre"))
+Maintainer: Sudhanva Purushotham <sxp176930@utdallas.edu>
+Description: BitcoinHeist Ransomware Dataset.
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
+Depends: R (>= 2.10)
