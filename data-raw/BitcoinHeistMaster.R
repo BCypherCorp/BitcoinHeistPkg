@@ -27,7 +27,9 @@ nrow(BitcoinHeist)
 
 #Create white data and virus data objects
 whitedata<-BitcoinHeist[BitcoinHeist$label=="white",]
+
 virusdata<-BitcoinHeist[BitcoinHeist$label!="white",]
+
 show(virusdata)
 show(whitedata)
 allfeatures<-c("length","weight","neighbors","count","looped","income")
@@ -41,23 +43,20 @@ show(uniqueVirusAddresses)
 #####################################################
 
 #' Function to list the ransomware families are in this dataset
-#'
-#' @param None
-#' @return Ransomware families in dataset.
-#' @examples
-#' getRansomwareFamilies()
+#' @export
 getRansomwareFamilies <- function(){
   uniqueVirusLabels <- unique(virusdata$label)
   return(uniqueVirusLabels)
 }
 
 
-#What is the most active ransomware family?
+#' Function to list the most active ransomware family?
+#' @export
 mostActiveFamily <- function(){
   mostActive <- tail(names(sort(table(virusdata$label))), 1)
   return(mostActive)
 }
-#Example usage: mostActiveFamily()
+
 
 #How many unique addresses belong to each ransomware family?
 uniqueAddressesOfRansomewareFamilies <- function(){
