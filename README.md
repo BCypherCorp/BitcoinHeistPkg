@@ -27,7 +27,7 @@ library(BitcoinHeistShard4)
 library(BitcoinHeistShard5)
 library(BitcoinHeistShard6)
 library(BitcoinHeistShard7)
-#R data package process
+
 #Merge the entire dataset into object 'BitcoinHeist'
 shards1and2 <- rbind(BitcoinHeistShard1, BitcoinHeistShard2)
 shards2and3 <- rbind(BitcoinHeistShard2, BitcoinHeistShard3)
